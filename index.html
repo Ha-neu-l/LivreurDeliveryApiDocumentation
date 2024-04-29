@@ -1,0 +1,1697 @@
+<!--
+ Livreur Delivery API
+ !-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Digixel-  LivreurDeliveryAPI Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/digixel.jpg" sizes="16x16" type="image/png"> 
+    <link rel="icon" href="images/digixel.jpg" sizes="16x16 32x32" type="image/png"> 
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Reddit+Mono:wght@200..900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body>
+<div class="left-menu">
+    <div class="content-logo">
+        <div class="logo">
+            <img alt="logo" title="logo" src="images/logo.png" height="32" />
+            <span>LivreurDeliveryAPI Documentation</span>
+        </div>
+        
+    </div>
+    <div class="mobile-menu-closer"></div>
+    <div class="nav-side-menu">
+        <div class="brand">LivreurDeliveryAPI Documentation</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+      
+            <div class="menu-list">
+      
+                <ul id="menu-content" class="menu-content collapse out">
+                    <!-- <li>
+                      <a href="#">
+                      <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                      </a>
+                    </li> -->
+                    <li>
+                        <a href="#overview">
+                        <i class="fa fa-cloud fa-lg"></i> Overview
+                        </a>
+                    </li>
+
+                    <span class="nav-item ml-4 mt-4" style="font-weight: bolder;color:#ffc107;">ALL ENDPOINTS</span>
+
+                    <li  data-toggle="collapse" data-target="#group0" class="collapsed">
+                      <a href="#loginpoint"><i class="fa fa-user-o fa-lg"></i> Login <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="group0">
+                        <li class=""><a href="#login">/login_check</a></li>
+                    </ul>
+
+                    <li  data-toggle="collapse" data-target="#group1" class="collapsed">
+                      <a href="#orderEndpoints"><i class="fa fa-cube fa-lg"></i> Order <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="group1">
+                        <li><a href="#getAllOrders">/orders</a></li>
+                        <li><a href="#orderStatus">/orderStatus</a></li>
+                        <li><a href="#getOldOrders">/oldOrders</a></li>
+                        <li><a href="#getNewOrders">/newParcels</a></li>
+                        <li><a href="#getOrdersByStatus">/getParcelsByStatus</a></li>
+                        <li><a href="#changeOrderStatus">/changeParcelStatus</a></li>
+                    </ul>
+    
+                    <li  data-toggle="collapse" data-target="#group2" class="collapsed">
+                        <a href="#disnEndpoints"><i class="	fa fa-history fa-lg"></i> Distribution Note <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="group2">
+                        <li class=""><a href="#getDisn">/distributionNote/list</a></li>
+                        <li><a href="#getDisnOrders">/distributionNote/orders</a></li>
+                    </ul>
+
+                    <li  data-toggle="collapse" data-target="#group3" class="collapsed">
+                      <a href="#paynEndpoints"><i class="fa fa-money fa-lg"></i> Payment Note <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="group3">
+                        <li class=""><a href="#paynList">/paymentNote/list</a></li>
+                        <li><a href="#paynOrders">/paymentNote/orders</a></li>
+                        <li><a href="#paynPdf">/paymentNote/pdf</a></li>
+                    </ul>
+
+                    <li  data-toggle="collapse" data-target="#group4" class="collapsed">
+                      <a href="#snEndpoint"><i class="fa fa-paper-plane-o fa-lg"></i> Sent Note <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="group4">
+                        <li class=""><a href="#importSendNote">/importSendNote</a></li>
+                    </ul>
+
+                    <span class="nav-item ml-4" style="font-weight: bolder;color:#ffc107;">SCHEMA & RESPONSE</span>
+    
+                    <li data-toggle="collapse" data-target="#service" class="collapsed">
+                      <a href="#schemas"><i class="fa fa-cubes fa-lg"></i> Schemas <span class="arrow"></span></a>
+                    </li>  
+                    <ul class="sub-menu collapse" id="service">
+                      <li ><a href="#loginSchema">Login response</a></li>
+                      <li ><a href="#orderSchema">Order</a></li>
+                      <li ><a href="#statusSchema">Status</a></li>
+                      <li ><a href="#disnSchema">Distribution note</a></li>
+                      <li ><a href="#paynSchema">payment Note</a></li>
+                      <li ><a href="#sentnSchema">Receive SN response</a></li>
+                    </ul>
+
+                    <li>
+                        <a href="#content-errors">
+                        <i class="fa fa-warning fa-lg"></i> Responses
+                        </a>
+                    </li>
+                </ul>
+         </div>
+    </div>
+</div>
+<div class="content-page">
+    <div class="content-code"></div>
+    <div class="content">
+        <div class="overflow-hidden content-section" id="content-get-started">
+            <h1 id="overview">Overview</h1>
+             <pre>
+    General API Information:
+
+        Base URL for BBD: https://{BaseURL}/api/ (request the BaseURL from the partner)
+        Version : v1.0.1
+        Last Update: 25th, April 2024
+
+                </pre> 
+            <p>
+                <b>LivreurDeliveryAPI</b> is an API that works on optimizing the delivery process as well as enabling partnership between delivery companies.
+                <br/><br/>
+                <i style="font-weight: 500;">Important Definitions:</i>
+                <br/>
+                <ul>
+                    <li><span style="font-weight: 500;color: #034c8f;">Order/parcel</span> : a package or item that is being trasported from a location to another.</li>
+                    <li><span style="font-weight: 500;color: #034c8f;">Delivery Company</span>: an organization responsible of trasporting parcels from customers(sellers) to the receivers(buyers).</li>
+                    <li><span style="font-weight: 500;color: #034c8f;">Order Tracking</span>: provides the customers updates on the current location, expected delivery time, and any relevant status changes of their orders.</li>
+                    <li><span style="font-weight: 500;color: #034c8f;">Distribution Note</span>: a note that contains the basic information of all the parcels sent to a specific delivery man for transforming it to final receiver.</li>
+                    <li><span style="font-weight: 500;color: #034c8f;">Payment Note</span>: contains all the parcels that receivers got & payed to delivery man, with detailed information about the payment.</li>
+                    <li><span style="font-weight: 500;color: #034c8f;">Sent Note</span>: contains the parcels received by  a specific zone for delivery.</li>
+                </ul>
+            </p>
+            <p>
+                <br/>
+                <i style="font-weight: 500;">Description:</i>
+                <br/><br/>
+                This API facilitates collaboration between Company_A, operating in Zone_A, and Company_B, located in Zone_B, allowing the first to efficiently send parcels for distribution within Zone_B. 
+                <br/>
+                With this the API enables companies to respond quickly to customer needs while minimizing expenses and efforts associated with parcel distribution.
+                <br/><br/>
+                <ul><mark>* EndPoints</mark>
+                    <li>The API provides many endpoints either endpoints related to managing orders, sent notes, distribution notes, and payment notes.</li>
+                </ul>
+                <ul><mark>* Request & reponse</mark>
+                    <li>The API utilizes both POST and GET methods for sending HTTP requests and responds with JSON data.</li>
+                </ul>
+               
+            </p>
+        </div>
+        <div class="overflow-hidden content-section" id="endpoint">
+            <h2>EndPoints</h2>
+
+             <!-- Change order status -->
+             <h3 style="font-weight: bolder;color:#ffc107;"> Login</h3>
+
+             <h4 id="login"  class="mt-4">/login_check</h4>
+             <pre><code class="bash">
+ 
+ # login query example
+ curl --request POST \
+ --url http://{BaseUrl}/api/login_check \
+ --header 'Accept: application/json' \
+ --header 'Content-Type: application/json' \
+ 
+             </code></pre> 
+             <p>
+                 Post email & password data to login.<br/>
+                 The login of the delivery man using the API.
+             </p>
+             <br>
+             <pre><code class="json">
+     
+ ---Success Result example (Login):
+ {
+     query:{
+        "email": "livreurapp@gmail.com",
+        "password": "livreurapp@gmail.com"
+     }
+     result: [
+         {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODE0Njc0ODgsImV4cCI6MTY4MTQ5NjI4OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibG9sIn0.rXGhJZZ1ORYmOHX6CNOMn_DmgJGWeCeRbGPqxrzbRECfHloCjr9lOs4oMRaFd4Vvkb97nTJ_KCzIfmHlsYShs-BMRNlj8xgiAFn61Vp3zNVcbihZDhoiuWpw5pYrKv3kZJyeGqRtTJnUc42QeSN2FDRPcv-EAR2r3-MzYzK3N_c4l-Yg95EfGM4W4IJ3Ojt-pxcmWkkKzXASH_IxF4GoUOF-AN0_0pJOlaTEpzsbghOWfCo6r85tzF6VT-I3wi2CNxNqjixl_RTEzajW5ANPyAQ6tfZMQJqatGVbJ8TBHkTYEmKSWPlGdL2kKnGciGS8E1PMDhoU1vT4dRhWfO62q2uGj7zDacj9IC9Q94poVgIWKMjUaTwpN2HMTB1aSvNWRLB8M8M1mJJ3q-0RAAthMlWvCglMXLPkTiKn0OwPven6QnbYDTh_W3CjpVf_Rne-aHTtEdVROBS4RA8jt1ZikI8_qPTKpjOsWNq0JBh99TkkWVwOG7OR7N6I0_HWQTgkJ6EQ87QYxOcTlnxNQv3zRtIMDBjjd2Am3wlnigW_lA",
+            "data": {
+                "id": 138,
+                "firstName": "name",
+                "lastName": "name",
+                "email": "email.example.com",
+                "phone": "0663777855",
+                "pic": "",
+                "user_token": "test_token_ref"
+            }
+         }
+     ]
+ }
+             </code></pre> 
+ 
+             <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+             <table class="central-overflow-x query-parameters mt-4" id="changeOrderStatusParameters">
+                 <thead>
+                 <tr>
+                     <th>Field</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td>email</td>
+                     <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                     <td><em style="color:orangered;">Required </em> The user's email.</td>
+                 </tr>
+                 <tr>
+                     <td>password</td>
+                     <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                     <td><em style="color:orangered;">Required </em> The user's password.</td>
+                 </tr>
+                 </tbody>
+             </table>
+
+
+
+            <h3 style="font-weight: bolder;color:#ffc107;"> Order</h3>
+            <h4 id="getAllOrders"  class="mt-4">/orders</h4>
+            <pre><code class="bash">
+
+# get all orders query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/orders \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+# get the new orders query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/newParcels \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account .<br/>
+                    Receive all the basic information of the existing new & old orders of the user.
+                </p>
+                <br>
+              <!-- get old orders -->
+                <h4 id="getOldOrders"  class="mt-4">/oldOrders</h4>
+                <p>
+                    Post user token from your account .<br/>
+                    Receive all the basic information of the old orders of the user.
+                </p>
+                <br>
+             <!-- get new orders -->
+                <h4 id="getNewOrders"  class="mt-4">/newParcels</h4>
+                <p>
+                    Post user token from your account .<br/>
+                    Receive all the basic information of the new orders of the user.
+                </p>
+                <br>
+            <pre><code class="json">
+                
+---Success Result example (Get All Orders):
+{
+  query:{
+            "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP"
+        }
+  result: [
+  {
+    "message": "Orders fetched successfully",
+    "newOrders": [],
+    "oldOrders": [
+        {
+            "parcel_id": 8257,
+            "parcel_code": "FES588832511RQ",
+            "time": "10 Jan 2023, 14:02",
+            "parcel_receiver": "محمد",
+            "parcel_phone": "0666777855",
+            "city": "FES",
+            "parcel_address": "centre ville tassel bih ayn3t lik sahbo howa li yakhod mn 3ndk la cmd",
+            "parcel_price": "240",
+            "parcel_note": "14",
+            "parcel_replace": 0,
+            "parcel_edited": 0,
+            "status": "CANCELED",
+            "statusname": "Annulé",
+            "statuscolor": "#f41515",
+            "folder_id": null,
+            "name": null,
+            "dates": "2023-01-23"
+        },
+        {
+            "parcel_id": 9805,
+            "parcel_code": "FES01232928003WL",
+            "time": "19 Jan 2023, 14:13",
+            "parcel_receiver": "DRISS",
+            "parcel_phone": "0663777855",
+            "city": "FES",
+            "parcel_address": "atlasse",
+            "parcel_price": "249",
+            "parcel_note": "",
+            "parcel_replace": 0,
+            "parcel_edited": 0,
+            "status": "NOANSWER",
+            "statusname": "Pas de réponse + SMS",
+            "statuscolor": "#25a0d7",
+            "folder_id": null,
+            "name": null,
+            "dates": "2023-01-21"
+        }
+        ],
+    "success": true
+  }
+  ]
+}
+
+
+---Success Result example (Get New Orders):
+{
+  query:{
+            "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP"
+        }
+  result: [
+  {
+    "message": "Orders fetched successfully",
+    "newOrders": [
+        {
+            "parcel_id": 8257,
+            "parcel_code": "FES588832523PH",
+            "time": "10 Jan 2023, 14:02",
+            "parcel_receiver": "Amal",
+            "parcel_phone": "0663777855",
+            "city": "FES",
+            "parcel_address": "centre ville ",
+            "parcel_price": "240",
+            "parcel_note": "14",
+            "parcel_replace": 0,
+            "parcel_edited": 0,
+            "status": "NEW",
+            "statusname": "Nouveau Colis",
+            "statuscolor": "#f41515",
+            "folder_id": null,
+            "name": null,
+            "dates": "2023-01-23"
+        }
+        ],
+    "success": true
+  }
+  ]
+}
+            </code></pre> 
+            <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+            <table class="central-overflow-x query-parameters mt-4" id="getAllOrdersParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>user_token</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                </tr>
+                </tbody>
+            </table>   
+            
+             <!-- get orders by status -->
+             <h4 id="getOrdersByStatus"  class="mt-4">/getParcelsByStatus</h4>
+             <pre><code class="bash">
+ 
+ # get all orders with a specific status query example
+     curl --request POST \
+     --url http://{BaseUrl}/api/getParcelsByStatus \
+     --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+ 
+                 </code></pre> 
+                 <p>
+                     Post user token from your account & a status code.<br/>
+                     Receive all the basic information of the all orders of the user with the same status.
+                 </p>
+                 <br>
+             <pre><code class="json">
+                 
+ ---Success Result example (Get Orders of status "RETURNED"):
+ {
+   query:{
+             "status": "RETURNED",
+             "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP" 
+         }
+   result: [
+   {
+     "success": true,
+     "message": "Found 2449 orders with status: RETURNED",
+     "ordersCount": 2449,
+     "orders": [
+         {
+             "parcel_id": "8",
+             "parcel_code": "E-CA04-2715012-MEK-MEK-MA",
+             "time": "21 Nov 2022, 00:49",
+             "parcel_receiver": "M-CL1424",
+             "parcel_phone": "0663777855",
+             "city": "MEKNES",
+             "parcel_address": "meknes 21/11",
+             "parcel_price": "300",
+             "parcel_note": "",
+             "parcel_replace": "0",
+             "parcel_edited": "0",
+             "status": "RETURNED",
+             "statusname": "Retourné",
+             "statuscolor": "#ff8040",
+             "folder_id": null,
+             "name": null,
+             "dates": "2022-11-22"
+         },
+         {
+             "parcel_id": "9",
+             "parcel_code": "E-CA04-4450692-MEK-MEK-MA",
+             "time": "21 Nov 2022, 00:49",
+             "parcel_receiver": "M-CL1425",
+             "parcel_phone": "0663777855",
+             "city": "MEKNES",
+             "parcel_address": "meknes Annuler",
+             "parcel_price": "450",
+             "parcel_note": "",
+             "parcel_replace": "0",
+             "parcel_edited": "0",
+             "status": "RETURNED",
+             "statusname": "Retourné",
+             "statuscolor": "#f41515",
+             "folder_id": null,
+             "name": null,
+             "dates": null
+         }
+     ]
+   }
+   ]
+ }
+ 
+            </code></pre> 
+             <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+             <table class="central-overflow-x query-parameters mt-4" id="getOrdersByStatusParameters">
+                 <thead>
+                 <tr>
+                     <th>Field</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td>user_token</td>
+                     <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                     <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                 </tr>
+                 <tr>
+                     <td>status</td>
+                     <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                     <td><em style="color:orangered;">Required </em> It's the status code. To get all the existing status codes check the next endpoint /orderStatus.</td>
+                 </tr>
+                 </tbody>
+             </table>
+
+            <!-- get all system's status -->
+            <h4 id="orderStatus"  class="mt-4">/orderStatus</h4>
+            <pre><code class="bash">
+
+# get all possible status query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/orderStatus \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account.<br/>
+                    Receive all the status of the orders with their infos (name,color,...).
+                </p>
+                <br>
+            <pre><code class="json">
+                
+---Success Result example (Get all status):
+{
+  query:{
+            "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP" 
+        }
+  result: [
+  {
+    "message": "order status fetched successfully",
+    "orderStatus": [
+        {
+            "parcel_statut_code": "DISTRIBUTION",
+            "string_text": "Mise en distribution",
+            "parcel_statut_color": "#24bbdb",
+            "parcel_statut_id": 9,
+            "parcel_statut_type": 2,
+            "isAllowed": 0,
+            "comment": 0,
+            "date": 0
+        },
+        {
+            "parcel_statut_code": "DELIVERED",
+            "string_text": "Livré",
+            "parcel_statut_color": "#00fa00",
+            "parcel_statut_id": 13,
+            "parcel_statut_type": 3,
+            "isAllowed": 1,
+            "comment": 1,
+            "date": 0
+        },
+            ...
+  }
+  ],
+    "colors": [
+        "#24bbdb",
+        "#00fa00",
+            ...
+    ],
+    "success": true
+}
+
+            </code></pre> 
+            <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+            <table class="central-overflow-x query-parameters mt-4" id="getOrdersByStatusParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>user_token</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Change order status -->
+            <h4 id="changeOrderStatus"  class="mt-4">/changeParcelStatus</h4>
+            <pre><code class="bash">
+
+# change the status of a parcel query example
+curl --request POST \
+--url http://{BaseUrl}/api/changeParcelStatus \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+
+            </code></pre> 
+            <p>
+                Post required data to edit the order's status.<br/>
+                This endpoint is for changing the status of an order using the API.
+            </p>
+            <br>
+            <pre><code class="json">
+    
+---Success Result example (Change the status of a parcel):
+{
+    query:{
+        "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP", 
+        "bar_code": "ar092364856CB",
+        "status_code": "v",
+        "status_comment": "order information to be verified",
+        "status_date": 0
+    }
+    result: [
+        {
+            "message": "order status fetched successfully",
+            "bar_code":"ar092364856CB",
+            "status":200,
+            "success": true
+        }
+    ]
+}
+            </code></pre> 
+
+            <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+            <table class="central-overflow-x query-parameters mt-4" id="changeOrderStatusParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>user_token</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                </tr>
+                <tr>
+                    <td>bar_code</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> The order's barcode.</td>
+                </tr>
+                <tr>
+                    <td>status_code</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> The Code of the new status of the order. Example: "DELIVERED".</td>
+                </tr>
+                <tr>
+                    <td>status_comment</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> For the parcels that have a required comment, a comment needs to be added from here.</td>
+                </tr>
+                <tr>
+                    <td>status_date</td>
+                    <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                    <td><em style="color:orangered;">Required </em> It's the status date for the status that requires it. Example, "REPORTED" status needs the date to where the delivery is reported.</td>
+                </tr>
+                </tbody>
+            </table>
+
+    <!--------------------------------------------------- distribution note part ------------------------------------------------------>
+            <h3 style="font-weight: bolder;color:#ffc107;"> Distribution Note</h3>
+            <!-- list of notes -->
+            <h4 id="getDisn"  class="mt-4">/distributionNote/list</h4>
+            <pre><code class="bash">
+
+# get the list of distribution notes query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/distributionNote/list \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account & the page.<br/>
+                    Receive all the distribution notes of the specified user.
+                </p>
+                <br>
+                <pre><code class="json">
+    
+---Success Result example (Get all distribution notes of the user):
+{
+    query:{
+        "page": 2,
+        "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP"
+    }
+    result: [
+        {
+            "message": "Distribution invoices fetched successfully",
+            "invoices": [
+                {
+                    "distribution_note_id": 788,
+                    "distribution_note_ref": "BDIS-050123-07880-55",
+                    "time": "05 Jan 2023, 14:36",
+                    "colis": 27
+                },
+                {
+                    "distribution_note_id": 767,
+                    "distribution_note_ref": "BDIS-040123-07670-62",
+                    "time": "04 Jan 2023, 15:53",
+                    "colis": 18
+                },
+                ....
+                {
+                    "distribution_note_id": 506,
+                    "distribution_note_ref": "BDIS-201222-05060-29",
+                    "time": "20 Dec 2022, 13:46",
+                    "colis": 30
+                }
+            ],
+            "success": true
+        }
+    ]
+}
+            </code></pre> 
+                    
+                <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+                <table class="central-overflow-x query-parameters mt-4" id="getDisnParameters">
+                    <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>user_token</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The page of data that the user wants to get (pagination).</td>
+                    </tr>
+                    </tbody>
+                </table>
+            
+            <!-- list of orders of a note -->
+            <h4 id="getDisnOrders"  class="mt-4">/distributionNote/orders</h4>
+            <pre><code class="bash">
+
+# get the list of distribution notes query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/distributionNote/orders \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account & the page.<br/>
+                    Receive all the orders of a specific distribution note.
+                </p>
+                <br>
+                <pre><code class="json">
+    
+---Success Result example (Get all orders of a distribution notes):
+{
+    query:{
+            "ds_id": 788,
+            "page": 1
+        }
+    result: [
+        {
+            "message": "Distribution orders fetched successfully",
+            "orders": [
+                {
+                    "parcel_id": "13393",
+                    "parcel_code": "TN052313393WE",
+                    "time": "03 May 2023, 22:22",
+                    "parcel_receiver": "ines mcharek",
+                    "parcel_phone": "24310353",
+                    "city": "Tunis",
+                    "parcel_address": "Centre urbain nord -tunis",
+                    "parcel_price": "307",
+                    "parcel_note": "",
+                    "parcel_replace": "0",
+                    "parcel_edited": "0",
+                    "status": "",
+                    "statusname": null,
+                    "statuscolor": null,
+                    "folder_id": null,
+                    "name": null,
+                    "dates": "2023-05-05"
+                },
+                {
+                    "parcel_id": "13569",
+                    "parcel_code": "TN052313569WM",
+                    "time": "03 May 2023, 22:22",
+                    "parcel_receiver": "Sondes Hendaoui",
+                    "parcel_phone": "98588949",
+                    "city": "Tunis",
+                    "parcel_address": "cite el khadra",
+                    "parcel_price": "32",
+                    "parcel_note": "portefeuille+aymen",
+                    "parcel_replace": "0",
+                    "parcel_edited": "0",
+                    "status": "NOANSWER",
+                    "statusname": "Pas de réponse ",
+                    "statuscolor": "#25a0d7",
+                    "folder_id": null,
+                    "name": null,
+                    "dates": null
+                },
+                ...
+                {
+                    "parcel_id": "13512",
+                    "parcel_code": "TN052313512RE",
+                    "time": "03 May 2023, 22:08",
+                    "parcel_receiver": "Amel Chaouali",
+                    "parcel_phone": "26417604",
+                    "city": "Tunis",
+                    "parcel_address": "Monfleury, rue sehel ",
+                    "parcel_price": "65",
+                    "parcel_note": "",
+                    "parcel_replace": "0",
+                    "parcel_edited": "0",
+                    "status": null,
+                    "statusname": null,
+                    "statuscolor": null,
+                    "folder_id": null,
+                    "name": null,
+                    "dates": null
+                }
+            ],
+            "success": true
+        }
+    ]
+}
+            </code></pre> 
+                    
+                <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+                <table class="central-overflow-x query-parameters mt-4" id="getDisnParameters">
+                    <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>ds_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The Id of the distribution note.</td>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The page of data that the user wants to get (pagination).</td>
+                    </tr>
+                    </tbody>
+                </table>
+    <!--------------------------------------------------- payment note part ------------------------------------------------------>
+            <h3 style="font-weight: bolder;color:#ffc107;"> Payment Note</h3>
+            <!-- list of notes -->
+            <h4 id="paynList"  class="mt-4">/paymentNote/list</h4>
+            <pre><code class="bash">
+
+# get the list of payment notes query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/paymentNote/list \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account & the page.<br/>
+                    Receive all the payment notes of the specified user.
+                </p>
+                <br>
+                <pre><code class="json">
+    
+---Success Result example (Get all payment notes of the user):
+{
+    query:{
+        "page": 1,
+        "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP"
+    }
+    result: [
+        {
+            "message": "Payment invoices fetched successfully",
+            "notes": [
+                {
+                    "payment_note_id": "8533",
+                    "payment_note_ref": "BPL-230424-085330-49-203",
+                    "time": "23 Apr 2024, 13:48",
+                    "payment_note_statut": "1",
+                    "status": "Payé",
+                    "colis": "15",
+                    "total": "1254",
+                    "fees": "0",
+                    "net": "1254"
+                },
+                {
+                    "payment_note_id": "8501",
+                    "payment_note_ref": "BPL-220424-085010-98-203",
+                    "time": "22 Apr 2024, 11:13",
+                    "payment_note_statut": "1",
+                    "status": "Payé",
+                    "colis": "710",
+                    "total": "56452.40000000001",
+                    "fees": "0",
+                    "net": "56452.40000000001"
+                },
+                ....
+                {
+                    "payment_note_id": "8459",
+                    "payment_note_ref": "BPL-200424-084590-78-203",
+                    "time": "20 Apr 2024, 02:26",
+                    "payment_note_statut": "1",
+                    "status": "Payé",
+                    "colis": "12",
+                    "total": "851",
+                    "fees": "0",
+                    "net": "851"
+                }
+            ],
+            "success": true
+        }
+    ]
+}
+            </code></pre> 
+                    
+                <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+                <table class="central-overflow-x query-parameters mt-4" id="getDisnParameters">
+                    <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>user_token</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The page of data that the user wants to get (pagination).</td>
+                    </tr>
+                    </tbody>
+                </table>
+            <!-- list of note's orders -->
+            <h4 id="paynOrders"  class="mt-4">/paymentNote/orders</h4>
+            <pre><code class="bash">
+
+# get the list of payment note's orders query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/paymentNote/orders \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account & the page.<br/>
+                    Receive all the payment note's orders.
+                </p>
+                <br>
+                <pre><code class="json">
+    
+---Success Result example (Get all payment note's orders):
+{
+    query:{
+        "payment_note_id": 1175,
+        "page": 1
+    }
+    result: [
+        {
+            "message": "Payment orders fetched successfully",
+            "orders": [
+                {
+                    "parcel_id": 9137,
+                    "parcel_code": "LC-12012023-21729",
+                    "time": "16 Jan 2023, 12:50",
+                    "parcel_receiver": "fatimabamboutcha",
+                    "parcel_phone": "0663777855",
+                    "city": "FES",
+                    "parcel_address": "centre ville",
+                    "parcel_price": "249",
+                    "parcel_note": "centre ville",
+                    "parcel_replace": 0,
+                    "parcel_edited": 0,
+                    "status": "TROIS",
+                    "statusname": "Livré",
+                    "statuscolor": "#00fa00",
+                    "folder_id": null,
+                    "name": null,
+                    "dates": "2023-01-17",
+                    "pay_parcels_fees": "8",
+                    "net": 241
+                },...
+                {
+                    "parcel_id": 9568,
+                    "parcel_code": "FES012348849ID",
+                    "time": "18 Jan 2023, 12:32",
+                    "parcel_receiver": "bahia",
+                    "parcel_phone": "0663777855",
+                    "city": "FES",
+                    "parcel_address": "18 rue abdelkrim benjllon apt 5 ville nouvelle ",
+                    "parcel_price": "308",
+                    "parcel_note": "",
+                    "parcel_replace": 0,
+                    "parcel_edited": 0,
+                    "status": null,
+                    "statusname": "Livré",
+                    "statuscolor": "#00fa00",
+                    "folder_id": null,
+                    "name": null,
+                    "dates": null,
+                    "pay_parcels_fees": "8",
+                    "net": 300
+                }
+                ],
+            "success": true
+        }
+    ]
+}
+            </code></pre> 
+                    
+                <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+                <table class="central-overflow-x query-parameters mt-4" id="getDisnParameters">
+                    <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>payment_note_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The payment note Id.</td>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td><em style="color:orangered;">Required </em> The page of data that the user wants to get (pagination).</td>
+                    </tr>
+                    </tbody>
+                </table>
+       
+         <!-- list of note's pdf -->
+         <h4 id="paynPdf"  class="mt-4">/paymentNote/pdf</h4>
+         <pre><code class="bash">
+
+# get the payment note's pdf query example
+ curl --request POST \
+ --url http://{BaseUrl}/api/paymentNote/pdf \
+ --header 'Accept: application/json' \
+ --header 'Content-Type: application/json' \
+
+             </code></pre> 
+             <p>
+                 Post note's reference.<br/>
+                 Download the payment's note PDF.
+             </p>
+             <br>
+             <pre><code class="json">
+ 
+---Success Result example (Get payment note's PDF):
+{
+ query:{
+    "ref": "BPL-230123-012630-64-140"
+ }
+ result: A pdf of the note
+}
+         </code></pre> 
+                 
+             <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+             <table class="central-overflow-x query-parameters mt-4" id="paynPdfParameters">
+                 <thead>
+                 <tr>
+                     <th>Field</th>
+                     <th>Type</th>
+                     <th>Description</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td>ref</td>
+                     <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                     <td><em style="color:orangered;">Required </em> The reference of the payment note.</td>
+                 </tr>
+                 </tbody>
+             </table>
+
+        <!--------------------------------------------------- Sent note part ------------------------------------------------------>
+            <h3 style="font-weight: bolder;color:#ffc107;"> Sent Note</h3>
+            <!-- list of notes -->
+            <h4 id="importSendNote"  class="mt-4">/importSendNote</h4>
+            <pre><code class="bash">
+
+# import sent note query example
+    curl --request POST \
+    --url http://{BaseUrl}/api/importSendNote \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+
+                </code></pre> 
+                <p>
+                    Post user token from your account & sent note reference.<br/>
+                    Set the sent note as received.
+                </p>
+                <br>
+                <pre><code class="json">
+    
+---Success Result example (receive sent note):
+{
+    query:{
+        "ref": "BE-211122-010-15",
+        "user_token":"7vWc9QBKpTzZoT25lmmvtKM93JGTYpknX2VHOPP"
+    }
+    result: [
+        {
+            "message": "Send note along with its orders have been accepted successfully",
+            "orders": [],
+            "orderCount": 0,
+            "nonAddedOrders": [],
+            "nonAddedOrdersCount": 0,
+            "success": true,
+            "status": 200
+        }
+    ]
+}
+            </code></pre> 
+                    
+                <h6 style="font-size: 14px !important;color:slategray;text-transform: none;">query parameters</h6>
+                <table class="central-overflow-x query-parameters mt-4" id="getDisnParameters">
+                    <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>user_token</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td><em style="color:orangered;">Required </em> It's the API key specified for a unique user (delivery man), ask your partner for it.</td>
+                    </tr>
+                    <tr>
+                        <td>ref</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td><em style="color:orangered;">Required </em> The reference of the sent note. Note that the user should have the same zone as the one of the note.</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        <!-- Schemas -->
+        <div class="overflow-hidden" id="schemas">
+            <h2>Schemas</h2>
+
+            <h4 id="loginSchema">Login response</h4>
+            <p>The basic information of a user.</p>
+             <pre><code class="json">
+
+# User info Schema:
+
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODE0Njc0ODgsImV4cCI6MTY4MTQ5NjI4OCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImVtYWlsIjoibG9sIn0.rXGhJZZ1ORYmOHX6CNOMn_DmgJGWeCeRbGPqxrzbRECfHloCjr9lOs4oMRaFd4Vvkb97nTJ_KCzIfmHlsYShs-BMRNlj8xgiAFn61Vp3zNVcbihZDhoiuWpw5pYrKv3kZJyeGqRtTJnUc42QeSN2FDRPcv-EAR2r3-MzYzK3N_c4l-Yg95EfGM4W4IJ3Ojt-pxcmWkkKzXASH_IxF4GoUOF-AN0_0pJOlaTEpzsbghOWfCo6r85tzF6VT-I3wi2CNxNqjixl_RTEzajW5ANPyAQ6tfZMQJqatGVbJ8TBHkTYEmKSWPlGdL2kKnGciGS8E1PMDhoU1vT4dRhWfO62q2uGj7zDacj9IC9Q94poVgIWKMjUaTwpN2HMTB1aSvNWRLB8M8M1mJJ3q-0RAAthMlWvCglMXLPkTiKn0OwPven6QnbYDTh_W3CjpVf_Rne-aHTtEdVROBS4RA8jt1ZikI8_qPTKpjOsWNq0JBh99TkkWVwOG7OR7N6I0_HWQTgkJ6EQ87QYxOcTlnxNQv3zRtIMDBjjd2Am3wlnigW_lA",
+    "data": {
+        "id": 138,
+        "firstName": "name",
+        "lastName": "name",
+        "email": "email.example.com",
+        "phone": "0663777855",
+        "pic": "",
+        "user_token": "test_token_ref"
+    }
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>token</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td> The barear token.</td>
+                    </tr>
+                    <tr>
+                        <td>firstName</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td> The first name of the user.</td>
+                    </tr>
+                    <tr>
+                        <td>lastName</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td> The last name of the user.</td>
+                    </tr>
+                    <tr>
+                        <td>email</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td> The email of the user.</td>
+                    </tr>
+                    <tr>
+                        <td>phone</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td> The phone number of the user.</td>
+                    </tr>
+                    <tr>
+                       <td>pic</td>
+                       <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                       <td> The link to the user's picture.</td>
+                   </tr>
+                   <tr>
+                       <td>user_token</td>
+                       <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                       <td> The user's token/ API key.</td>
+                   </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <h4 id="orderSchema">Order</h4>
+            <p>An order or parcel, has all the infomation needed to deliver its content to a speific receiver. As well as the information of its content.</p>
+             <pre><code class="json">
+
+# Order Schema:
+
+{
+    "parcel_id": 9805,
+    "parcel_code": "FES01232928003WL",
+    "time": "19 Jan 2023, 14:13",
+    "parcel_receiver": "DRISS",
+    "parcel_phone": "0663777855",
+    "city": "FES",
+    "parcel_address": "atlasse",
+    "parcel_price": "249",
+    "parcel_note": "",
+    "parcel_replace": 0,
+    "parcel_edited": 0,
+    "status": "NOANSWER",
+    "statusname": "Pas de réponse + SMS",
+    "statuscolor": "#25a0d7",
+    "folder_id": null,
+    "name": null,
+    "dates": "2023-01-21"
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>parcel_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>Parcel identifier in the dataBase.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_code</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>Parcel barcode.</td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The creation time of the parcel.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_receiver</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The receiver's name.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_phone</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>Receiver's phone number.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>city</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The city to where the parcel will be sent.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>parcel_note</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>A comment about the parcel added by the seller or any type of users of the WebApp.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_price</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Number</i></td>
+                        <td>The price of the parcel</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_adress</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The adress of the receiver, or of the place that the parcel will be delivered to.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>parcel_replace</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>
+                            [default: 0] This can have 2 values: "1" -> it's an order that replaces an other one "0" -> a normal parcel.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>parcel_edited</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>
+                            If equals 1 means the parcel was edited before, if it's 0 means that it was not edited before.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The status code of the parcel. Example: "NOANSWER"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>statusname</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The name of the status that appears to the users. Example: "Pas de réponse + SMS"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>statuscolor</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The color specified for that status and that of the status bafge(dispaly). Example: "#25a0d7"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>folder_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The ids of the folders of the parcel.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>
+                            The names of the folders.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>dates</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>
+                            The date of reporting (to which date the parcel's process was reported).
+                        </td>
+                    </tr>
+                </tbody>
+            </table> 
+            <br/>
+
+            <h4 id="statusSchema">Status</h4>
+            <p>The information of a status.</p>
+             <pre><code class="json">
+
+# Status Schema:
+
+{
+    "parcel_statut_code": "DISTRIBUTION",
+    "string_text": "Mise en distribution",
+    "parcel_statut_color": "#24bbdb",
+    "parcel_statut_id": 9,
+    "parcel_statut_type": 2,
+    "isAllowed": 0,
+    "comment": 0,
+    "date": 0
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>parcel_statut_code</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The code of the status in the system. Example: "V".</td>
+                    </tr>
+                    <tr>
+                        <td>string_text</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The status name dispayed for the users. Example: "A vérifié"</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_statut_color</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The code of the status's color.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_statut_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The status's id.</td>
+                    </tr>
+                    <tr>
+                        <td>parcel_statut_type</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The type of status. [1->situation, 2->First status, 3->second status]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>isAllowed</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>Either it's 0(not allowed to use in /changeParcelStatus) for 1(it's allowed to be used).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>comment</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>Either the comment is required (=1) or not required (=0) for a status.</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>Either the date is required (=1) or not required (=0) for a status. Example: "POSTPONED" status requires the date to where it was postponed.</td>
+                    </tr>
+                </tbody>
+            </table> 
+            <br/>
+
+            <h4 id="disnSchema">Distribution note</h4>
+            <p>The information of a distribution note.</p>
+             <pre><code class="json">
+
+# Distribution note Schema:
+
+{
+    "distribution_note_id": 788,
+    "distribution_note_ref": "BDIS-050123-07880-55",
+    "time": "05 Jan 2023, 14:36",
+    "colis": 27
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>distribution_note_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The idenfifier of the distribution note in the dataBase.</td>
+                    </tr>
+                    <tr>
+                        <td>distribution_note_ref</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The reference of the distribution note.</td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The time of creation of the distribution note.</td>
+                    </tr>
+                    <tr>
+                        <td>colis</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The number of parcels in this note.</td>
+                    </tr>
+                </tbody>
+            </table> 
+            <br/>
+
+            <h4 id="paynSchema">Payment note</h4>
+            <p>The information of a Payment note.</p>
+             <pre><code class="json">
+
+# Payment note Schema:
+
+{
+    "payment_note_id": "8533",
+    "payment_note_ref": "BPL-230424-085330-49-203",
+    "time": "23 Apr 2024, 13:48",
+    "payment_note_statut": "1",
+    "status": "Payé",
+    "colis": "15",
+    "total": "1254",
+    "fees": "0",
+    "net": "1254"
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>payment_note_id</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The idenfifier of the Payment note in the dataBase.</td>
+                    </tr>
+                    <tr>
+                        <td>payment_note_ref</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The reference of the Payment note.</td>
+                    </tr>
+                    <tr>
+                        <td>time</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The time of creation of the Payment note.</td>
+                    </tr>
+                    <tr>
+                        <td>payment_note_statut</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The id of status of the note (0 or 1).</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">string</i></td>
+                        <td>The name of status of the note (0: new, 1:payed).</td>
+                    </tr>
+                    <tr>
+                        <td>colis</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>Number of parcels of the note.</td>
+                    </tr>
+                    <tr>
+                        <td>total</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>Total price in the note (net - fees).</td>
+                    </tr>
+                    <tr>
+                        <td>fees</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The extra fees in this note.</td>
+                    </tr>
+                    <tr>
+                        <td>net</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The total price of the parcels of the note.</td>
+                    </tr>
+                </tbody>
+            </table> 
+            <br/>
+
+            <h4 id="sentnSchema">Receive Sent Note response</h4>
+            <p>The information of a received sent note.</p>
+             <pre><code class="json">
+
+# Sent note Schema:
+
+{
+    "message": "Send note along with its orders have been accepted successfully",
+    "orders": [],
+    "orderCount": 0,
+    "nonAddedOrders": [],
+    "nonAddedOrdersCount": 0,
+    "success": true,
+    "status": 200
+}
+                
+                </code></pre> 
+                <br>
+            <table class="central-overflow-x query-parameters mt-4" id="createOrderParameters">
+                <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>message</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">String</i></td>
+                        <td>The response message returned by the API, this one is always in all types of responses.</td>
+                    </tr>
+                    <tr>
+                        <td>orders</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Object</i></td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>orderCount</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The number of received orders of the sent note.</td>
+                    </tr>
+                    <tr>
+                        <td>nonAddedOrders</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Object</i></td>
+                        <td>.</td>
+                    </tr>
+                    <tr>
+                        <td>nonAddedOrdersCount</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The number of non received orders.</td>
+                    </tr>
+                    <tr>
+                        <td>success</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">boolean</i></td>
+                        <td>(True) for success and (False) for failure.</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td><i style="font-family: 'Reddit Mono', monospace;">Integer</i></td>
+                        <td>The response status code (Check responses part for more).</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+
+        <div class="overflow-hidden content-section" id="content-errors">
+            <h2 id="content-errors">Responses</h2>
+            <p>
+                All codes with their meaning:
+            </p>
+                <pre><code class="json">
+
+# Examples of failure response:
+
+--- Receive a sent note
+{
+    "message": "Le bon d'envoi a déjà été reçu",
+    "success": false,
+    "status": 400
+}
+
+--- Login
+{
+    "code": 401,
+    "message": "Invalid credentials."
+}
+                
+                </code></pre> 
+                <br>
+            <table>
+                <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Meaning</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><span class="badge badge-success">200</span></td>
+                    <td>
+                        The query was executed <code class="higlighted">successfuly</code> and returned a response.
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-warning">400</span></td>
+                    <td>
+                        <code class="higlighted">Missing</code> Required Information or failed query.
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-warning">401</span></td>
+                    <td>
+                        <code class="higlighted">Invalid</code> credentials.
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-warning">403</span></td>
+                    <td>
+                        User have <code class="higlighted"> not access </code> to the api.
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-warning">404</span></td>
+                    <td>
+                        <code class="higlighted"> Not Found </code> request.
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge badge-danger">500</span></td>
+                    <td>
+                        <code class="higlighted"> Internal server error </code> .
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- Examples of responses  -->
+        </div>
+    </div>
+    <div class="content-code"></div>
+</div>
+    <!-- Done By Hajar Aafane from Digixel Agadir, Morocco 04.2024 -->
+<script src="js/script.js"></script>
+</body>
+</html>
