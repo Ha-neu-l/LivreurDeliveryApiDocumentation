@@ -86,3 +86,22 @@ window.addEventListener('scroll', function (e) {
     e.preventDefault();
     onScroll();
 });
+
+
+function toggleMenu() {
+
+    // Toggle the menu open/close logic here
+    var menu = document.querySelector('.left-menu');
+    var closer = document.querySelector('.mobile-menu-closer');
+console.log(menu.classList);
+    if (menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        closer.style.display = 'none';
+    } else {
+        menu.classList.add('open');
+        closer.style.display = 'block';
+    }
+        // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    menu.classList.add('open');
+}
