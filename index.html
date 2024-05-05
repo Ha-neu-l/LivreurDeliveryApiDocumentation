@@ -203,8 +203,8 @@
  
  # login query example
  curl --request POST \
- --url http://{{BaseUrl}}/api/login_check \
- --header 'Accept: application/json' \
+ --url {{baseUrl}}/api/login_check \
+ --header 'Accept: */*' \
  --header 'Content-Type: application/json' \
  
              </code></pre> 
@@ -267,10 +267,11 @@
   
   # get all status query example
   curl --request POST \
-  --url http://{{BaseUrl}}/api/status \
-  --header 'Accept: application/json' \
+  --url {{baseUrl}}/api/status \
+  --header 'Accept: */*' \
   --header 'Content-Type: application/json' \
-  
+  --header 'Authorization: Bearer [YourAccessToken]'
+
               </code></pre> 
               <p>
                   Get all the status that the system uses for parcels' history.
@@ -434,21 +435,24 @@
 
 # get all parcels query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/allparcels \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/allparcels \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
 # get all new & old parcels separated query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/parcels \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/parcels \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
 # get the new orders (only) query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/newParcels \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/newParcels \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -700,9 +704,10 @@
  
  # get all orders with a specific status query example
      curl --request POST \
-     --url http://{{BaseUrl}}/api/getParclesByStatus \
-     --header 'Accept: application/json' \
+     --url {{baseUrl}}/api/getParclesByStatus \
+     --header 'Accept: */*' \
      --header 'Content-Type: application/json' \
+     --header 'Authorization: Bearer [YourAccessToken]'
  
                  </code></pre> 
                  <p>
@@ -774,9 +779,10 @@
 
 # change the status of a parcel query example
 curl --request POST \
---url http://{{BaseUrl}}/api/changeParcelStatus \
---header 'Accept: application/json' \
+--url {{baseUrl}}/api/changeParcelStatus \
+--header 'Accept: */*' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer [YourAccessToken]'
 
             </code></pre> 
             <p>
@@ -845,9 +851,10 @@ curl --request POST \
   
   # get all notifications query example
   curl --request POST \
-  --url http://{{BaseUrl}}/api/notification \
-  --header 'Accept: application/json' \
+  --url {{baseUrl}}/api/notification \
+  --header 'Accept: */*' \
   --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer [YourAccessToken]'
   
               </code></pre> 
               <p>
@@ -905,9 +912,10 @@ curl --request POST \
 
 # get the list of distribution notes query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/distributionNote/list \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/distributionNote/list \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -991,9 +999,10 @@ curl --request POST \
 
 # get the list of parcels of a distribution notes query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/distributionNote/parcels \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/distributionNote/parcels \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -1077,9 +1086,10 @@ curl --request POST \
 
 # get the PDF of a distribution notes query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/distributionNote/pdf \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/distributionNote/pdf \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -1126,9 +1136,10 @@ curl --request POST \
 
 # get the list of payment notes query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/paymentNote/list \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/paymentNote/list \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -1215,9 +1226,10 @@ curl --request POST \
 
 # get the list of payment note's parcels query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/paymentNote/parcels \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/paymentNote/parcels \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
@@ -1303,9 +1315,10 @@ curl --request POST \
 
 # get the payment note's pdf query example
  curl --request POST \
- --url http://{{BaseUrl}}/api/paymentNote/pdf \
- --header 'Accept: application/json' \
+ --url {{baseUrl}}/api/paymentNote/pdf \
+ --header 'Accept: */*' \
  --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer [YourAccessToken]'
 
              </code></pre> 
              <p>
@@ -1350,9 +1363,10 @@ curl --request POST \
 
 # import sent note query example
     curl --request POST \
-    --url http://{{BaseUrl}}/api/importSendNote \
-    --header 'Accept: application/json' \
+    --url {{baseUrl}}/api/importSendNote \
+    --header 'Accept: */*' \
     --header 'Content-Type: application/json' \
+    --header 'Authorization: Bearer [YourAccessToken]'
 
                 </code></pre> 
                 <p>
